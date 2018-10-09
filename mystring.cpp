@@ -1,15 +1,18 @@
 #include "mystring.h"
 #include <string.h>
+#include <iostream>
+using namespace std;
 
-string::string(){
+Mystring::Mystring() {}
 
-}
-
-string::~string() {
-
-}
-
-void string::resize(int size) {
+char &Mystring::resize(int size)
+{
+    // strcpy(str, "hello");
+    // char *temp = new char[length];
     char *temp = new char[length];
+
     strcpy(temp, str);
+    delete str;
+    cout << str;
+    return *temp;
 }
