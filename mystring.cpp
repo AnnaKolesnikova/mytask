@@ -3,16 +3,16 @@
 #include <iostream>
 using namespace std;
 
-Mystring::Mystring() {}
-
-char &Mystring::resize(int size)
+Mystring::Mystring(int length)
 {
-    // strcpy(str, "hello");
-    // char *temp = new char[length];
-    char *temp = new char[length];
+    str = new char[length];
+    strcpy(str, "hello");
+};
 
+char *Mystring::resize(int size)
+{
+    char *temp = new char[size];
     strcpy(temp, str);
-    delete str;
-    cout << str;
-    return *temp;
+    delete[] str;
+    return temp;
 }

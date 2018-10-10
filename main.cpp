@@ -2,13 +2,14 @@
 
 int main()
 {
-    Mystring mystr;
+    int initialSize = 5;
+    Mystring mystr(initialSize);
     int newSize = 10;
-    char &res = mystr.resize(newSize);
-    cout << sizeof(&res);
-    // for(int i = 0; i < strlen(&res); i++){
+    char *res = mystr.resize(newSize);
+    for (int i = 0; i < newSize; i++)
+    {
+        cout << *(res + i) << endl;
+    }
 
-    // }
-    // cout << &res;
     return 0;
 }
