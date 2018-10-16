@@ -1,10 +1,16 @@
-class string {
-    public:
-        string();
-        ~string();
+class Mystring
+{
 
-        void resize(int size);
+public:
+  Mystring();
+  Mystring(int length);
+  Mystring(const char *newStr);
+  ~Mystring();
 
-        char *str = new char[10];
-        int length = 10;
+  void resize(int size);
+  void printString();
+  char *getString();
+
+protected:
+  char *str;
 };

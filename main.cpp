@@ -1,7 +1,15 @@
-#include "mystring.h"
+#include "mystring.cpp"
 
-int main() {
-    string str;
-
+int main()
+{
+    Mystring mystr("abcdef");
+    int newSize = 20;
+    mystr.resize(newSize);
+    mystr.printString();
+    char *res = mystr.getString();
+    for (int i = 0; i < strlen(res); i++)
+    {
+        cout << *(res + i) << endl;
+    }
     return 0;
 }
