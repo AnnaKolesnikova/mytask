@@ -3,16 +3,45 @@
 #include <iostream>
 using namespace std;
 
+Mystring::Mystring()
+{
+    str = new char[10];
+}
+
 Mystring::Mystring(int length)
 {
     str = new char[length];
-    strcpy(str, "hello");
-};
+}
 
-char *Mystring::resize(int size)
+Mystring::Mystring(const char *newStr)
 {
-    char *temp = new char[size];
+    str = new char[strlen(newStr)];
+    strcpy(str, newStr);
+}
+
+Mystring::~Mystring()
+{
+}
+
+void Mystring::resize(int size)
+{
+    char *temp = new char[strlen(str)];
     strcpy(temp, str);
     delete[] str;
-    return temp;
+    str = new char[size];
+    strcpy(str, temp);
+    delete[] temp;
+}
+
+void Mystring::printString()
+{
+    for (int i = 0; i < strlen(str); i++)
+    {
+        cout << *(str + i) << endl;
+    }
+}
+
+char *Mystring::getString()
+{
+    return str;
 }
