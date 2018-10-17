@@ -2,14 +2,18 @@
 
 int main()
 {
-    Mystring mystr("abcdef");
-    int newSize = 20;
-    mystr.resize(newSize);
+    Mystring mystr("abcdefghjk");
     mystr.printString();
     char *res = mystr.getString();
     for (int i = 0; i < strlen(res); i++)
     {
-        cout << *(res + i) << endl;
+        cout << *(res + i);
     }
+    cout << endl;
+
+    mystr.add("12345jyrjytjhtjytjnhytkjg");
+    mystr.printString();
+
+    cout << mystr.getLength() << endl;
     return 0;
 }
