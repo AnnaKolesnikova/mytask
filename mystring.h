@@ -8,11 +8,13 @@ public:
   ~Mystring();
 
   void add(const char *strPart);
-  void resize(int size);
   void printString();
   char *getString();
   int getLength();
 
 protected:
+  void resize(int size);
+
   char *str;
+  int allocatedMemory;
 };
