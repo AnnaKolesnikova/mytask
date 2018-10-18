@@ -23,6 +23,16 @@ Mystring::~Mystring()
 {
 }
 
+void Mystring::add(const char *strPart)
+{
+    // int sum = strlen(strPart) + strlen(str);
+    // if ((strlen(strPart) + strlen(str)))
+    // {
+    // }
+    resize(strlen(strPart) + strlen(str));
+    strcat(str, strPart);
+}
+
 void Mystring::resize(int size)
 {
     char *temp = new char[strlen(str)];
@@ -37,11 +47,16 @@ void Mystring::printString()
 {
     for (int i = 0; i < strlen(str); i++)
     {
-        cout << *(str + i) << endl;
+        cout << str[i];
     }
+    cout << endl;
 }
 
 char *Mystring::getString()
 {
     return str;
+}
+int Mystring::getLength()
+{
+    return strlen(str);
 }
