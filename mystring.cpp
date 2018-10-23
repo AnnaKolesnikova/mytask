@@ -6,30 +6,35 @@ using namespace std;
 Mystring::Mystring()
 {
     str = new char[10];
+    allocatedMemory = 10;
 }
 
 Mystring::Mystring(int length)
 {
     str = new char[length];
+    allocatedMemory = length;
 }
 
 Mystring::Mystring(const char *newStr)
 {
-    str = new char[strlen(newStr)];
+    int newStrLength = strlen(newStr);
+    str = new char[newStrLength];
     strcpy(str, newStr);
+    allocatedMemory = newStrLength;
 }
 
 Mystring::~Mystring()
 {
+    delete[] str;
 }
 
 void Mystring::add(const char *strPart)
 {
-    // int sum = strlen(strPart) + strlen(str);
-    // if ((strlen(strPart) + strlen(str)))
-    // {
-    // }
-    resize(strlen(strPart) + strlen(str));
+    int newStrLength = strlen(strPart) + strlen(str);
+    if (newStrLength > allocatedMemory)
+    {
+        resize(newStrLength);
+    }
     strcat(str, strPart);
 }
 
@@ -41,6 +46,8 @@ void Mystring::resize(int size)
     str = new char[size];
     strcpy(str, temp);
     delete[] temp;
+
+    allocatedMemory = size;
 }
 
 void Mystring::printString()
