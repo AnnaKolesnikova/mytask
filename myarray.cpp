@@ -32,45 +32,51 @@ Myarray::~Myarray()
     delete[] arr;
 }
 
-void Myarray::add(const int *arrPart)
+void Myarray::add(const int *arrPart, int length)
 {
-    // int newArrLength = sizeof(arrPart) / sizeof(int);
-    // cout << "new----" << newArrLength << endl;
-    for (int i = 0; i < numOfElements; i++)
+    int newArrLength = (numOfElements + length) / sizeof(int);
+    if (newArrLength > arrAllocatedMemory)
     {
-        cout << "yyyyyyy----" << arrPart[i] << endl;
+        //resize();
+        cout << "hello" << endl;
     }
+
+    for (int i = 0; i < newArrLength; i++)
+    {
+        arr[i] = arr[i];
+        arr[i + numOfElements / sizeof(int)] = arrPart[i];
+    }
+
+    for (int i = 0; i < newArrLength; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 }
 
-// void Myarray::resize(int size)
-// {
-//     int length = sizeof(arr) / sizeof(int);
-//     int *tempArr = new int[length];
-//     for (int i = 0; i < length; i++)
-//     {
-//         tempArr[i] = arr[i];
-//     }
-//     delete[] arr;
-//     arr = new int[size];
-//     for (int i = 0; i < size; i++)
-//     {
-//         arr[i] = tempArr[i];
-//     }
-//     delete[] tempArr;
-
-//     arrAllocatedMemory = size;
-// }
-
-int Myarray::getArrayLength()
-{
-    return numOfElements / sizeof(int);
-}
+//void Myarray::resize(int size)
+//{
+//	int length = sizeof(arr) / sizeof(*arr);
+//	int *tempArr = new int[length];
+//	for (int i = 0; i < length; i++)
+//	{
+//		tempArr[i] = arr[i];
+//	}
+//	delete[] arr;
+//	arr = new int[size];
+//	for (int i = 0; i < size; i++)
+//	{
+//		arr[i] = tempArr[i];
+//	}
+//	delete[] tempArr;
+//
+//	arrAllocatedMemory = size;
+//}
 
 void Myarray::printArray()
 {
-    for (int i = 0; i < getArrayLength(); i++)
+    for (int i = 0; i < numOfElements / sizeof(int); i++)
     {
         cout << arr[i];
     }
-    cout << endl;
 }

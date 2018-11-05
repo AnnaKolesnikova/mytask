@@ -29,19 +29,23 @@ void mystringClass()
 
 void myarrayClass()
 {
-    int arr[] = {1, 2, 3, 4, 5};
+    int arr[] = {1, 2, 3, 4, 5, 6};
     Myarray myarr(arr, sizeof(arr));
+    myarr.printArray();
     cout << endl;
-    myarr.printArray();
+    int numOfElements = sizeof(arr) / sizeof(int);
 
-    int arrPart[] = {6, 7, 8, 9, 10, 11};
-    myarr.add(arrPart);
-    myarr.printArray();
+    int arrPart[] = {7, 8, 9, 10, 11, 12, 13, 14, 15};
+    myarr.add(arrPart, sizeof(arrPart));
+
+    // myarr.printArray();
+    cout << endl;
 }
 
 int main()
 {
     // mystringClass();
     myarrayClass();
+    getchar();
     return 0;
 }

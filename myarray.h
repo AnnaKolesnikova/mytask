@@ -7,14 +7,12 @@ public:
   Myarray(const int *newArr, int length);
   ~Myarray();
 
-  void add(const int *arrPart);
-  // void resize(int size);
+  void add(const int *arrPart, int length);
+  //void resize(int size);
 
   void printArray();
 
 protected:
-  int getArrayLength();
-
   int *arr;
   int numOfElements;
   int arrAllocatedMemory;
