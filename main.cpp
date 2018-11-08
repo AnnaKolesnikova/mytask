@@ -1,4 +1,11 @@
-#include "mystring.cpp"
+#include "mystring.h"
+#include "myarray.h"
+#include <iostream>
+
+#include <string.h>
+#include <stdio.h>
+
+using namespace std;
 
 void mystringClass()
 {
@@ -20,8 +27,25 @@ void mystringClass()
     cout << mystr.getLength() << endl;
 }
 
+void myarrayClass()
+{
+    int arr[] = {1, 2, 3, 4, 5, 6};
+    Myarray myarr(arr, sizeof(arr));
+
+    const int arrPartLength = 6;
+    int arrPart[] = {7, 8, 9, 10, 12, 13};
+    myarr.add(arrPart, arrPartLength);
+    myarr.show();
+
+    // int *tmp = new int[tmpLength]
+
+    cout << endl;
+}
+
 int main()
 {
-    mystringClass();
+    // mystringClass();
+    myarrayClass();
+    // getchar();
     return 0;
 }
