@@ -8,12 +8,14 @@ public:
   ~Myarray();
 
   void add(const int *arrPart, int length);
-  //void resize(int size);
-
-  void printArray();
+  void show();
+  // void resize(int size);
 
 protected:
   int *arr;
   int numOfElements;
   int arrAllocatedMemory;
+
+private:
+  void init(int length);
 };

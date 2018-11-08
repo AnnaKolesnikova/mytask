@@ -4,22 +4,18 @@ using namespace std;
 
 Myarray::Myarray()
 {
-    arr = new int[10];
-    arrAllocatedMemory = 10;
-    numOfElements = 0;
+    init(10);
 }
 
 Myarray::Myarray(int length)
 {
-    arr = new int[length];
-    arrAllocatedMemory = length;
-    numOfElements = 0;
+    init(length);
 }
 
 Myarray::Myarray(const int *newArr, int length)
 {
-    arrAllocatedMemory = length;
-    numOfElements = length;
+    arrAllocatedMemory = length / sizeof(int);
+    numOfElements = length / sizeof(int);
     arr = new int[arrAllocatedMemory];
     for (int i = 0; i < arrAllocatedMemory; i++)
     {
@@ -32,51 +28,42 @@ Myarray::~Myarray()
     delete[] arr;
 }
 
+void Myarray::init(int length)
+{
+    arr = new int[length];
+    arrAllocatedMemory = length;
+    numOfElements = 0;
+}
+
 void Myarray::add(const int *arrPart, int length)
 {
-    int newArrLength = (numOfElements + length) / sizeof(int);
-    if (newArrLength > arrAllocatedMemory)
+    const int tmpLength = length + numOfElements;
+    int *tmp = new int[tmpLength];
+
+    for (int i = 0; i < tmpLength; i++)
     {
-        //resize();
-        cout << "hello" << endl;
+        if (i < numOfElements)
+        {
+            tmp[i] = arr[i];
+        }
+        else
+        {
+            tmp[i] = arrPart[i - numOfElements];
+        }
     }
 
-    for (int i = 0; i < newArrLength; i++)
-    {
-        arr[i] = arr[i];
-        arr[i + numOfElements / sizeof(int)] = arrPart[i];
-    }
+    arr = tmp;
+    numOfElements = tmpLength;
+}
 
-    for (int i = 0; i < newArrLength; i++)
+void Myarray::show()
+{
+    for (int i = 0; i < numOfElements; i++)
     {
         cout << arr[i] << " ";
     }
-    cout << endl;
 }
 
-//void Myarray::resize(int size)
-//{
-//	int length = sizeof(arr) / sizeof(*arr);
-//	int *tempArr = new int[length];
-//	for (int i = 0; i < length; i++)
-//	{
-//		tempArr[i] = arr[i];
-//	}
-//	delete[] arr;
-//	arr = new int[size];
-//	for (int i = 0; i < size; i++)
-//	{
-//		arr[i] = tempArr[i];
-//	}
-//	delete[] tempArr;
-//
-//	arrAllocatedMemory = size;
-//}
-
-void Myarray::printArray()
-{
-    for (int i = 0; i < numOfElements / sizeof(int); i++)
-    {
-        cout << arr[i];
-    }
-}
+// void Myarray::resize(int size)
+// {
+// }

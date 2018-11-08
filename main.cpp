@@ -31,14 +31,14 @@ void myarrayClass()
 {
     int arr[] = {1, 2, 3, 4, 5, 6};
     Myarray myarr(arr, sizeof(arr));
-    myarr.printArray();
-    cout << endl;
-    int numOfElements = sizeof(arr) / sizeof(int);
 
-    int arrPart[] = {7, 8, 9, 10, 11, 12, 13, 14, 15};
-    myarr.add(arrPart, sizeof(arrPart));
+    const int arrPartLength = 6;
+    int arrPart[] = {7, 8, 9, 10, 12, 13};
+    myarr.add(arrPart, arrPartLength);
+    myarr.show();
 
-    // myarr.printArray();
+    // int *tmp = new int[tmpLength]
+
     cout << endl;
 }
 
@@ -46,6 +46,6 @@ int main()
 {
     // mystringClass();
     myarrayClass();
-    getchar();
+    // getchar();
     return 0;
 }
